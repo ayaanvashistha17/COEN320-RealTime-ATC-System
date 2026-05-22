@@ -20,16 +20,13 @@ The system reads an active flight manifest file, introduces planes into a virtua
 
 ## 🛠️ Tech Stack & Environment
 
-* 
-**Language:** C/C++ (Object-Oriented Design) 
+* **Language:** C/C++ (Object-Oriented Design) 
 
 
-* 
-**Operating System:** QNX Neutrino RTOS (7.0+ x86 / AArch64 Targets) 
+* **Operating System:** QNX Neutrino RTOS (7.0+ x86 / AArch64 Targets) 
 
 
-* 
-**Development Environment:** QNX Momentics IDE (Eclipse-based platform) 
+* **Development Environment:** QNX Momentics IDE (Eclipse-based platform) 
 
 
 * **Low-Level Primitives:** QNX Kernel Channels, Native Pulsing Timers, POSIX Shared Memory (`mmap`), Standard Threads (`pthread`)
@@ -64,27 +61,23 @@ The project workspace is cleanly divided into three decoupled operational subsys
 
 ### 1. `Lab4_ATC` (Core Simulation & Telemetry Caching)
 
-* 
-**Concurrent Aircraft Actors:** Every airplane inside the boundaries is instantiated as an independent, periodic execution thread. Every 1 second, it updates its internal coordinates based on velocity vectors ($SpeedX, SpeedY, SpeedZ$).
+* **Concurrent Aircraft Actors:** Every airplane inside the boundaries is instantiated as an independent, periodic execution thread. Every 1 second, it updates its internal coordinates based on velocity vectors ($SpeedX, SpeedY, SpeedZ$).
 
 
 * **Double-Buffered Radar Scanning:** Implements a background Radar polling thread that queries every active aircraft server at a strict 1Hz frequency. It stores telemetry data into an inactive vector buffer and performs an atomic pointer swap, guaranteeing that external systems can read consistent tracking data without causing threading race conditions.
 
 ### 2. `Lab5_Computer` (The Analytical Engine)
 
-* 
-**Predictive Collision Avoidance:** Scans the active airspace matrix and projects spatial trajectories forward by an adjustable $n$-second look-ahead window.
+* **Predictive Collision Avoidance:** Scans the active airspace matrix and projects spatial trajectories forward by an adjustable $n$-second look-ahead window.
 
 
-* 
-**Operator Console Overrides:** Hosts a console input loop enabling an operator to query extended telemetry options or manually issue command adjustments (`send(R, m)`) to modify a targeted plane's course parameters.
+* **Operator Console Overrides:** Hosts a console input loop enabling an operator to query extended telemetry options or manually issue command adjustments (`send(R, m)`) to modify a targeted plane's course parameters.
 
 
 
 ### 3. `ProjectDisplay` (Visualizer Component)
 
-* 
-**Plan View Rasterization:** A dedicated rendering thread that wakes up precisely every 5 seconds to generate an scannable, flat top-down grid map showing the positional locations of all planes currently traveling through the tracking zone.
+* **Plan View Rasterization:** A dedicated rendering thread that wakes up precisely every 5 seconds to generate an scannable, flat top-down grid map showing the positional locations of all planes currently traveling through the tracking zone.
 
 
 
@@ -131,12 +124,10 @@ Instead of standard non-deterministic system utilities (like `sleep`), this proj
 
 ### Schedulability & Benchmarking
 
-* 
-**Priority Assignment:** Task execution hierarchies are calculated using **Rate Monotonic Scheduling (RMS)**, assigning higher priority execution tracks to threads with tighter cyclic periods.
+* **Priority Assignment:** Task execution hierarchies are calculated using **Rate Monotonic Scheduling (RMS)**, assigning higher priority execution tracks to threads with tighter cyclic periods.
 
 
-* 
-**Execution Profiling:** The code wraps processing blocks with high-resolution clock cycle measurements (`ClockCycles()`) to track and analyze **Best-Case Execution Time (BCET)** and **Worst-Case Execution Time (WCET)** under stress conditions.
+* **Execution Profiling:** The code wraps processing blocks with high-resolution clock cycle measurements (`ClockCycles()`) to track and analyze **Best-Case Execution Time (BCET)** and **Worst-Case Execution Time (WCET)** under stress conditions.
 
 
 
