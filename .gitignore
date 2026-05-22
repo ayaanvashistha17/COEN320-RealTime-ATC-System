@@ -1,0 +1,5 @@
+.metadata/
+.project
+.DS_Store
+*.o
+*.d
