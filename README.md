@@ -1,5 +1,3 @@
----
-
 # COEN 320: Real-Time Air Traffic Control (ATC) System
 
 An industrial-grade, multi-threaded Air Traffic Control (ATC) simulator built to track, monitor, and manage commercial aircraft navigating through simulated en-route airspace. Developed as a core design project for **COEN 320: Introduction to Real-Time Systems** at **Concordia University**.
