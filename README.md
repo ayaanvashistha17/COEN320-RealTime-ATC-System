@@ -1,5 +1,3 @@
-Here is a comprehensive, production-grade `README.md` designed for your repository. It balances a high-level conceptual overview for non-technical readers (like recruiters) with deep architectural mechanics for technical observers (like engineers and professors).
-
 ---
 
 # COEN 320: Real-Time Air Traffic Control (ATC) System
